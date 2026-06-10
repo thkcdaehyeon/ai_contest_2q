@@ -426,8 +426,9 @@ for path in files:
               <div class="nocode-step"><i data-lucide="file-down"></i><strong>3. 결과 받기</strong><span>완성된 .docx 파일 다운로드</span></div>
             </div>
             <p class="nocode-good"><i data-lucide="check"></i> Python 설치 불필요 · 코드는 안 보임 · 클라우드가 대신 실행</p>
+            <p class="nocode-seed">참고로, 이때 AI가 뒤에서 한 일이 바로 <strong>'파이썬 스크립트를 짜서 실행'</strong>입니다. 이 장면, 잠시 뒤 다시 나옵니다.</p>
           </div>
-          <aside class="notes">비개발자가 오늘 당장 해볼 수 있는 가장 쉬운 경로입니다. 파일을 올리고 말로 시키면 AI가 코드를 내부에서 실행하고 결과 파일만 돌려줍니다. 설치도, 코드도 필요 없습니다. 이게 개인 차원의 출발점입니다.</aside>
+          <aside class="notes">비개발자가 오늘 당장 해볼 수 있는 가장 쉬운 경로입니다. 파일을 올리고 말로 시키면 AI가 코드를 내부에서 실행하고 결과 파일만 돌려줍니다. 설치도, 코드도 필요 없습니다. 이게 개인 차원의 출발점입니다. 마지막 한 줄로 '뒤에서는 AI가 스크립트를 짜서 실행한다'는 사실을 미리 심어둡니다 — 뒤의 Skill 해부 장면에서 이 코드를 다시 등장시켜 회수합니다.</aside>
         </section>
 
         <section class="slide gap-slide">
@@ -484,6 +485,93 @@ for path in files:
             <p class="agent-note">Skills는 일반 채팅창보다, Codex·Claude Code 같은 AI 에이전트 환경에서 힘을 발휘합니다.</p>
           </div>
           <aside class="notes">여기서 중요한 구분이 있습니다. 스크립트도 반복 작업을 줄이고, 공유할 수도 있습니다. Skills는 스크립트의 대체재가 아니라, 스크립트에 업무 맥락을 입히는 포장 방식입니다. 어떤 파일을 받아야 하는지, 어떤 스크립트를 실행해야 하는지, 결과를 어떤 기준으로 검증해야 하는지까지 AI가 이해하게 만드는 겁니다. 그래서 팀원은 코드 파일명을 외우거나 사용법을 다시 읽지 않고, '월간 영업 보고서 만들어줘'처럼 업무 이름으로 부를 수 있습니다. 단, Skills는 일반 채팅창보다 Codex나 Claude Code 같은 AI 에이전트 환경에서 힘을 발휘한다는 전제가 있습니다.</aside>
+        </section>
+
+        <section class="slide skill-anatomy-slide">
+          <div class="slide-frame">
+            <p class="eyebrow">Skill의 정체</p>
+            <h2>Skill은 그냥 폴더입니다</h2>
+            <p class="lead">마법처럼 보여도, 안에 든 건 평범합니다. 업무 지침서(<strong>글</strong>), 검증된 도구(<strong>코드</strong>), 그리고 늘 쓰던 <strong>양식·예시 파일</strong>입니다.</p>
+            <div class="skill-anatomy">
+              <div class="skill-tree">
+                <div class="console-bar">'월간 영업 보고서' Skill을 열어보면</div>
+                <ul class="tree-list">
+                  <li class="t-root"><i data-lucide="folder-open"></i><code>월간-영업-보고서/</code><em>업무 하나 = 폴더 하나</em></li>
+                  <li class="t-md"><i data-lucide="book-open-text"></i><code>SKILL.md</code><em>업무 지침서 — 글</em></li>
+                  <li class="t-py"><i data-lucide="folder"></i><code>scripts/</code><em>검증된 도구 — 코드</em></li>
+                  <li class="t-py t-sub"><i data-lucide="file-code-2"></i><code>merge_sales.py</code><em>아까 AI가 만든 그 코드</em></li>
+                  <li><i data-lucide="file-text"></i><code>양식.docx</code><em>스크립트가 채워 넣을 양식</em></li>
+                  <li><i data-lucide="folder"></i><code>examples/</code><em>예시 파일 · 정답 샘플</em></li>
+                </ul>
+              </div>
+              <div class="anatomy-cards">
+                <article class="anatomy-card md-card">
+                  <h3><i data-lucide="book-open-text"></i> SKILL.md = 업무 지침서</h3>
+                  <p>언제 이 일을 하는지, 무엇을 확인하는지, 예외가 생기면 어떻게 하는지 — 신입에게 인수인계하듯 글로 적습니다.</p>
+                </article>
+                <article class="anatomy-card py-card">
+                  <h3><i data-lucide="terminal-square"></i> scripts/ = 검증된 도구</h3>
+                  <p>한 번 잘 됐던 코드를 버리지 않고 저장합니다. 다음 달에도, 담당자가 바뀌어도 똑같이 실행됩니다.</p>
+                </article>
+              </div>
+            </div>
+            <p class="statement">마법이 아니라, 지침서·도구·양식이 든 폴더였습니다.</p>
+          </div>
+          <aside class="notes">Skill은 특별한 설치물이 아니라 폴더라서, 누구나 직접 열어 안을 확인할 수 있습니다. 안에는 글(SKILL.md), 코드(scripts), 그리고 늘 쓰던 양식·예시 파일이 들어 있습니다. 양식 파일을 함께 넣어두면 스크립트가 그 양식을 채운 완성본을 돌려주게 만들 수 있다는 점도 짚어주세요. 특히 scripts에 들어가는 코드는 새로 배우는 게 아니라, 아까 클라우드 AI가 뒤에서 짜줬던 바로 그 코드라는 점을 강조하면 됩니다. '한 번 잘 된 결과를 폴더에 저장해두는 것'이 Skill 만들기의 전부라는 인상을 남기는 게 목표입니다.</aside>
+        </section>
+
+        <section class="slide split-rule-slide">
+          <div class="slide-frame">
+            <p class="eyebrow">나누는 기준</p>
+            <h2>어떤 일은 코드로, 어떤 일은 글로 담을까?</h2>
+            <p class="lead">신입에게 이 업무를 넘긴다고 상상해보세요. <strong>계산기를 쥐여줄 일</strong>인가요, <strong>판단 기준을 알려줄 일</strong>인가요?</p>
+            <div class="comparison split-rule">
+              <article class="compare-column rule-script">
+                <h3><i data-lucide="terminal-square"></i> 매번 똑같아야 하는 일</h3>
+                <p class="rule-dest"><code>scripts/</code>에 코드로 고정</p>
+                <ul>
+                  <li>파일 10개를 읽어 하나로 합치기</li>
+                  <li>셀 값을 꺼내 더하고 계산하기</li>
+                  <li>정해진 양식에 값 채워 넣기</li>
+                </ul>
+              </article>
+              <article class="compare-column rule-md">
+                <h3><i data-lucide="book-open-text"></i> 그때그때 판단이 필요한 일</h3>
+                <p class="rule-dest"><code>SKILL.md</code>에 글로 남기기</p>
+                <ul>
+                  <li>이상한 숫자를 만나면 어떻게 할지</li>
+                  <li>보고서 문장의 어조와 강조점</li>
+                  <li>어떤 도구를 언제 꺼내 쓸지</li>
+                </ul>
+              </article>
+            </div>
+            <p class="reassure"><i data-lucide="info"></i> 헷갈려도 괜찮습니다. 어떻게 나눌지부터 AI와 상의하면 됩니다.</p>
+          </div>
+          <aside class="notes">비개발자가 Skill을 만들 때 가장 헷갈리는 지점입니다. 기준은 하나 — 결과가 매번 똑같아야 하면 코드로 고정하고, 상황 판단이 필요하면 글로 남깁니다. 신입에게 인수인계할 때 계산기를 쥐여줄 일인지, 판단 기준을 설명해줄 일인지 상상하게 하면 바로 이해합니다. 그리고 이 구분조차 AI에게 물어보면 함께 정리해줍니다 — 완벽하게 나누지 못해도 시작할 수 있다는 안심을 주고 마무리합니다.</aside>
+        </section>
+
+        <section class="slide split-fail-slide">
+          <div class="slide-frame">
+            <p class="eyebrow">거꾸로 담으면</p>
+            <h2>거꾸로 담으면, 이렇게 됩니다</h2>
+            <p class="lead">기준이 헷갈려 반대로 담으면, 누구나 겪는 두 가지 사고가 납니다.</p>
+            <div class="fail-grid">
+              <article>
+                <i data-lucide="dices"></i>
+                <h3>계산을 글로만 맡기면</h3>
+                <p>AI가 매번 코드를 새로 짭니다. 어떤 달은 맞고, 어떤 달은 미묘하게 다릅니다.</p>
+                <span class="fail-tag">복불복 — 숫자가 흔들림</span>
+              </article>
+              <article>
+                <i data-lucide="ban"></i>
+                <h3>판단까지 코드로 굳히면</h3>
+                <p>양식이 조금만 바뀌어도 에러를 내고 멈춥니다. 예외 앞에서 융통성이 없습니다.</p>
+                <span class="fail-tag">경직 — 예외에 멈춤</span>
+              </article>
+            </div>
+            <p class="statement">기억할 건 한 줄 — 숫자는 코드에, 판단은 글에.</p>
+          </div>
+          <aside class="notes">두 실패 장면이 기준을 외우게 합니다. 계산·취합·변환을 글로만 맡기면 AI가 매번 코드를 새로 짜기 때문에 결과가 달마다 미묘하게 달라질 수 있습니다 — 숫자가 흔들리는 보고서는 신뢰를 잃습니다. 반대로 어조나 예외 대응 같은 판단까지 코드로 굳히면 양식이 조금만 바뀌어도 멈춥니다. 그래서 '숫자는 코드에, 판단은 글에' 한 줄로 정리하고 다음 장으로 넘어갑니다.</aside>
         </section>
 
         <section class="slide maturity-slide">

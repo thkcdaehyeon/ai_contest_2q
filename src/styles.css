@@ -3061,3 +3061,325 @@ mark {
     grid-column: 1 / -1;
   }
 }
+
+/* Skill 해부 3부작 — 폴더의 정체, 나누는 기준, 실패 장면 */
+.skill-anatomy-slide { --accent: #57d7ff; }
+.split-rule-slide { --accent: #5ee0a0; }
+.split-fail-slide { --accent: #ffd166; }
+
+.skill-anatomy-slide .slide-frame,
+.split-rule-slide .slide-frame,
+.split-fail-slide .slide-frame {
+  justify-content: flex-start;
+  padding-top: 36px;
+  padding-bottom: 30px;
+  gap: 16px;
+}
+
+.skill-anatomy-slide h2,
+.split-rule-slide h2,
+.split-fail-slide h2 {
+  font-size: 47px;
+  line-height: 1.1;
+}
+
+.skill-anatomy-slide .lead,
+.split-rule-slide .lead,
+.split-fail-slide .lead {
+  max-width: 1120px;
+  font-size: 25px;
+  line-height: 1.34;
+}
+
+.skill-anatomy-slide .statement,
+.split-fail-slide .statement {
+  font-size: 30px;
+}
+
+.skill-anatomy {
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.skill-tree {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 28px 28px,
+    #08111f;
+  color: #eaf4ff;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.tree-list {
+  flex: 1;
+  margin: 0;
+  padding: 18px 22px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.tree-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.tree-list li:not(.t-root) {
+  padding-left: 30px;
+}
+
+.tree-list li.t-sub {
+  padding-left: 62px;
+}
+
+.tree-list svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+}
+
+.tree-list code {
+  color: #eaf4ff;
+}
+
+.tree-list em {
+  margin-left: auto;
+  padding-left: 12px;
+  color: #93a9c8;
+  font-family: "IBM Plex Sans KR", Pretendard, sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tree-list .t-md svg {
+  color: #5ee0a0;
+}
+
+.tree-list .t-md code {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(94, 224, 160, 0.16);
+  color: #aef3d2;
+}
+
+.tree-list .t-py svg {
+  color: #57d7ff;
+}
+
+.tree-list .t-py code {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(87, 215, 255, 0.14);
+  color: #bfe9ff;
+}
+
+.anatomy-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.anatomy-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 26px;
+  border: 1px solid rgba(218, 230, 244, 0.92);
+  border-left: 6px solid var(--accent);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.anatomy-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 24px;
+}
+
+.anatomy-card h3 svg {
+  width: 28px;
+  height: 28px;
+}
+
+.anatomy-card p {
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.42;
+}
+
+.anatomy-card.md-card {
+  border-left-color: #07996d;
+}
+
+.anatomy-card.md-card h3 svg {
+  color: var(--green);
+}
+
+.anatomy-card.py-card {
+  border-left-color: #2d6df6;
+}
+
+.anatomy-card.py-card h3 svg {
+  color: var(--blue);
+}
+
+/* 나누는 기준 — scripts vs SKILL.md */
+.split-rule {
+  gap: 20px;
+}
+
+.split-rule .compare-column {
+  min-height: 0;
+  padding: 24px 30px;
+}
+
+.split-rule h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  font-size: 26px;
+}
+
+.split-rule h3 svg {
+  width: 30px;
+  height: 30px;
+}
+
+.split-rule .rule-dest {
+  margin: 6px 0 4px;
+  color: var(--muted);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.split-rule .rule-dest code {
+  margin-right: 8px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: #08111f;
+  font-size: 18px;
+}
+
+.split-rule li {
+  background: rgba(255, 255, 255, 0.78);
+  font-size: 21px;
+}
+
+.compare-column.rule-script {
+  border-color: rgba(45, 109, 246, 0.35);
+  background: linear-gradient(180deg, #f8fbff, var(--blue-soft));
+}
+
+.rule-script h3 svg {
+  color: var(--blue);
+}
+
+.rule-script .rule-dest code {
+  color: #9fdcff;
+}
+
+.compare-column.rule-md {
+  border-color: rgba(7, 153, 109, 0.40);
+  background: linear-gradient(180deg, #f9fffc, var(--green-soft));
+}
+
+.rule-md h3 svg {
+  color: var(--green);
+}
+
+.rule-md .rule-dest code {
+  color: #9ff0c9;
+}
+
+/* 실패 장면 — 거꾸로 담았을 때 */
+.fail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.fail-grid article {
+  min-height: 240px;
+  padding: 28px 32px;
+  border: 1px solid rgba(255, 209, 102, 0.45);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #fffdf6, var(--amber-soft));
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.fail-grid svg {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 14px;
+  color: var(--amber);
+}
+
+.fail-grid h3 {
+  color: var(--ink);
+  font-size: 26px;
+}
+
+.fail-grid p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.42;
+}
+
+.fail-tag {
+  display: inline-flex;
+  margin-top: 16px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--red-soft);
+  color: #811b16;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* nocode 슬라이드 — 스크립트 복선 한 줄 */
+.nocode-seed {
+  color: var(--stage-muted);
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.nocode-seed strong {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .skill-anatomy,
+  .split-rule,
+  .fail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tree-list em {
+    display: none;
+  }
+}
