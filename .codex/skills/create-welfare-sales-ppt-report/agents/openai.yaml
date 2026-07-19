@@ -1,0 +1,4 @@
+interface:
+  display_name: "복지용구 영업 PPT 보고서"
+  short_description: "영업관리 Excel을 이로움 양식의 PPT 보고서로 만듭니다"
+  default_prompt: "Use $create-welfare-sales-ppt-report to create an Irowoom-branded weekly PowerPoint report from the workbook."

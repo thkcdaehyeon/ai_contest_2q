@@ -1,0 +1,4 @@
+interface:
+  display_name: "복지용구 영업 Word 보고서"
+  short_description: "영업관리 Excel에서 주간 상세보고서를 생성합니다"
+  default_prompt: "Use $create-welfare-sales-word-report to create this week’s detailed Word sales report from the workbook."

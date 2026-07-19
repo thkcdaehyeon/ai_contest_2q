@@ -1,0 +1,4 @@
+interface:
+  display_name: "복지용구 영업 Excel 자동화"
+  short_description: "영업일지를 다중 시트 영업관리 대장으로 갱신합니다"
+  default_prompt: "Use $update-welfare-sales-workbook to update the welfare sales workbook from this week’s sales logs."
