@@ -78,6 +78,27 @@
     });
   }
 
+  function initializeSkillDemoReveal() {
+    const demo = document.querySelector("[data-skilldemo]");
+    const button = document.querySelector("[data-skilldemo-button]");
+    if (!demo || !button) return;
+
+    const stages = ["s1", "s2", "s3"];
+    const nextLabels = ["② 스크립트 실행", "③ 결과 받기", "처음부터 다시"];
+    const label = button.querySelector("span");
+
+    button.addEventListener("click", () => {
+      const next = stages.find((stage) => !demo.classList.contains(stage));
+      if (next) {
+        demo.classList.add(next);
+        label.textContent = nextLabels[stages.indexOf(next)];
+      } else {
+        stages.forEach((stage) => demo.classList.remove(stage));
+        label.textContent = "① Skill 읽기";
+      }
+    });
+  }
+
   function initializeBatchReveal() {
     const demo = document.querySelector("[data-batch-demo]");
     const button = document.querySelector("[data-batch-button]");
@@ -96,6 +117,7 @@
     initializeZipReveal();
     initializeMediaReveal();
     initializeProtectReveal();
+    initializeSkillDemoReveal();
     initializeBatchReveal();
   });
 })();

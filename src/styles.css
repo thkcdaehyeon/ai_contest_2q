@@ -1453,24 +1453,6 @@ mark {
   justify-self: center;
 }
 
-.maturity-ladder {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-}
-
-.maturity-ladder span {
-  min-height: 86px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background: var(--blue-soft);
-  color: var(--blue);
-  font-size: 25px;
-  font-weight: 850;
-}
-
 .demo-runner {
   display: grid;
   grid-template-columns: 1.1fr 0.8fr;
@@ -2041,12 +2023,6 @@ mark {
 .batch-demo.stuck .friction-list li:nth-child(3) { transition-delay: 380ms; }
 .batch-demo.stuck .friction-list li:nth-child(4) { transition-delay: 540ms; }
 
-/* 성숙도 사다리 강조 */
-.maturity-ladder span.hl {
-  background: var(--green-soft);
-  color: var(--green);
-}
-
 /* 형식을 의심하라 — 도구 바꾸기 */
 .swap-grid {
   display: grid;
@@ -2142,7 +2118,6 @@ mark {
   .browser-stage,
   .swimlanes,
   .safety-model ul,
-  .maturity-ladder,
   .final-stack,
   .value-list,
   .swap-grid {
@@ -2231,7 +2206,8 @@ body,
 .past-now-slide,
 .prompt-slide,
 .nocode-slide,
-.maturity-slide { --accent: #5ee0a0; }
+.skill-demo-slide,
+.start-path-slide { --accent: #5ee0a0; }
 .x-files-slide,
 .zip-reveal,
 .pitfall-slide,
@@ -2240,9 +2216,9 @@ body,
 .media-reveal,
 .mechanism-slide,
 .html-proof-slide,
-.html-advantages-slide,
 .skill-share-slide { --accent: #57d7ff; }
-.protection-reveal { --accent: #ff8a7a; }
+.protection-reveal,
+.guard-slide { --accent: #ff8a7a; }
 .why-format-slide,
 .format-principle-slide,
 .use-cases-slide,
@@ -2454,8 +2430,7 @@ pre {
 }
 
 .question-card.after,
-.compare-column.now,
-.maturity-ladder span.hl {
+.compare-column.now {
   border-color: rgba(7, 153, 109, 0.40);
   background: linear-gradient(180deg, #f9fffc, var(--green-soft));
 }
@@ -2832,12 +2807,6 @@ mark {
 .repository-node {
   background: linear-gradient(180deg, #f8fbff, var(--blue-soft));
   color: var(--blue);
-}
-
-.maturity-ladder span {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--stage-text);
-  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .final-stack div {
@@ -3381,5 +3350,354 @@ mark {
 
   .tree-list em {
     display: none;
+  }
+}
+
+/* 이 발표자료도 코드 — 장점 칩 */
+.proof-pills {
+  gap: 12px;
+}
+
+.proof-pills .pill {
+  gap: 10px;
+  font-size: 19px;
+}
+
+.proof-pills .pill svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+/* 실전 장면 — Skill이 실제로 도는 데모 */
+.skill-demo-slide h2 {
+  font-size: 46px;
+  line-height: 1.1;
+}
+
+.skill-demo-slide .lead {
+  max-width: 1120px;
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.skill-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.agent-console {
+  width: min(1040px, 100%);
+  align-self: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 28px 28px,
+    #08111f;
+  color: #eaf4ff;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.agent-console .console-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 10px 18px;
+  font-size: 17px;
+}
+
+.agent-console .console-bar svg {
+  width: 20px;
+  height: 20px;
+}
+
+.agent-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 22px 18px;
+}
+
+.agent-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #f8fbff;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.agent-user b {
+  flex-shrink: 0;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #06101d;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.agent-user .attach {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  color: #93a9c8;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.agent-user .attach svg {
+  width: 18px;
+  height: 18px;
+}
+
+.agent-log {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: max-height 320ms ease, opacity 300ms ease, transform 300ms ease;
+}
+
+.skill-demo.s1 .agent-log.g1,
+.skill-demo.s2 .agent-log.g2,
+.skill-demo.s3 .agent-log.g3 {
+  max-height: 180px;
+  opacity: 1;
+  transform: none;
+}
+
+.agent-log li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #c4d2e5;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.agent-log svg {
+  flex-shrink: 0;
+  width: 21px;
+  height: 21px;
+  color: var(--accent);
+}
+
+.agent-log code {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(87, 215, 255, 0.14);
+  color: #bfe9ff;
+  font-size: 17px;
+}
+
+.agent-log li.warn {
+  color: #ffedb0;
+}
+
+.agent-log li.warn svg {
+  color: #ffd166;
+}
+
+.agent-log li.done {
+  color: #dff8ed;
+}
+
+.agent-log li.done svg {
+  color: #5ee0a0;
+}
+
+.agent-log li.done code {
+  background: rgba(94, 224, 160, 0.16);
+  color: #aef3d2;
+}
+
+.demo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.demo-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.skill-demo.s3 .demo-metrics {
+  opacity: 1;
+  transform: none;
+}
+
+.demo-metrics span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid rgba(94, 224, 160, 0.32);
+  border-radius: 999px;
+  background: rgba(94, 224, 160, 0.15);
+  color: #dff8ed;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.demo-metrics svg {
+  width: 20px;
+  height: 20px;
+  color: #5ee0a0;
+}
+
+/* 안전 습관 — 검증과 보안 */
+.guard-slide .lead {
+  max-width: 1120px;
+}
+
+.guard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.guard-grid article {
+  min-height: 230px;
+  padding: 28px 32px;
+  border: 1px solid rgba(218, 230, 244, 0.92);
+  border-top: 6px solid var(--accent);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.guard-grid svg {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 14px;
+}
+
+.guard-grid article.guard-verify {
+  border-top-color: #07996d;
+}
+
+.guard-verify svg {
+  color: var(--green);
+}
+
+.guard-grid article.guard-secure {
+  border-top-color: #2d6df6;
+}
+
+.guard-secure svg {
+  color: var(--blue);
+}
+
+.guard-grid h3 {
+  color: var(--ink);
+  font-size: 26px;
+}
+
+.guard-grid p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.45;
+}
+
+.guard-grid code {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #08111f;
+  color: #9ff0c9;
+  font-size: 18px;
+}
+
+/* 오늘의 첫 걸음 — 첫 Skill 만들기 */
+.start-quote {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+  padding: 18px 28px;
+  border: 1px solid rgba(94, 224, 160, 0.35);
+  border-radius: 8px;
+  background: rgba(94, 224, 160, 0.12);
+  color: var(--stage-text);
+  box-shadow: var(--shadow);
+}
+
+.start-quote svg {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  color: var(--accent);
+}
+
+.start-quote p {
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.start-quote strong {
+  color: var(--accent);
+}
+
+/* 마무리 — 콜백과 링크 */
+.closing-slide .final-stack div {
+  min-height: 170px;
+}
+
+.closing-slide .final-line {
+  margin-top: 6px;
+  font-size: 38px;
+}
+
+.closing-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.closing-cta span {
+  color: var(--stage-muted);
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.closing-cta .url-window {
+  padding: 12px 18px;
+  font-size: 19px;
+}
+
+@media (max-width: 900px) {
+  .guard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .agent-user .attach {
+    display: none;
+  }
+
+  .start-quote p {
+    font-size: 24px;
   }
 }
